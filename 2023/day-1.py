@@ -8,7 +8,7 @@ class DayOne(Day):
     def __init__(self):
         super().__init__(1, 2023)
         self.createFormatter()
-        self.list = self.formatter.toList(self.getInput())
+        self.list = self.formatter.toList(self.getInput(), "\n")
     def getDigit(self, entry):
         digit = None
         entry_length = len(entry)
