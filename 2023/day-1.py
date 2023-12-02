@@ -23,6 +23,28 @@ class DayOne(Day):
 
 currentDay = DayOne()
 formatter = currentDay.formatter
+
+# SECOND PART START
+
+replaceDict = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+}
+i = 0
+for entry in currentDay.list:
+    currentDay.list[i] = formatter.replaceByDict(entry, replaceDict)
+    print(currentDay.list[i])
+    i = i + 1
+
+# SECOND PART END
+
 endResult = 0
 for entry in currentDay.list:
     firstDigit = currentDay.getDigit(entry)
