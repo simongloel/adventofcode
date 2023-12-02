@@ -52,8 +52,15 @@ possibleCubes = {
     "blue": 14
 }
 sumGameIds = 0
+sumPower = 0
 for game in games:
     gameValid = True
+    gamePower = 1
+    highestOfGame = {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+    }
     for set in game["sets"]:
         cubesOfSet = {
             "red": 0,
@@ -61,7 +68,10 @@ for game in games:
             "blue": 0
         }
         for key in set.keys():
-            cubesOfSet[key] = cubesOfSet[key] + int(set.get(key))
+            currentValue = int(set.get(key))
+            cubesOfSet[key] = cubesOfSet[key] + currentValue
+            if currentValue > highestOfGame[key]:
+                highestOfGame[key] = currentValue
         # Check validity of set:
         setValid = True
         for key in cubesOfSet.keys():
@@ -73,4 +83,11 @@ for game in games:
 
     if gameValid == True:
         sumGameIds = sumGameIds + int(game["game_id"])
+
+    for key in highestOfGame.keys():
+        if highestOfGame.get(key) > 0:
+            gamePower = gamePower * highestOfGame.get(key)
+    sumPower = sumPower + gamePower
+
 print("The end result is " + str(sumGameIds))
+print("The sum of power is " + str(sumPower))
